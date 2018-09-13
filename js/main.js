@@ -111,7 +111,7 @@ function RadialTimer() {
 $(document).ready(function() {
     Timer = new RadialTimer();
     Timer.init("timer", 3, function(){
-		const psid = $('#psid').val();
+		const psid = $('#psid').val() || null;
 		oReq.open("GET", `https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid=${psid}`, true);
 		oReq.setRequestHeader("Access-Control-Allow-Origin", "*");
 		oReq.send();
