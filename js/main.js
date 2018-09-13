@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 var Timer;
 var oReq = new XMLHttpRequest();
 
@@ -31,7 +30,7 @@ window.extAsyncInit = () => {
         // error retrieving supported features
         console.log(err);
 	});
-	
+
 	oReq.addEventListener("load", function(){
 		MessengerExtensions.requestCloseBrowser(function success() {
 			console.log("Webview closing");
@@ -40,13 +39,6 @@ window.extAsyncInit = () => {
 		});
 	});
 };
-
-const doGet = function(){
-	const psid = $('#psid').val();
-	oReq.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
-	oReq.setRequestHeader("Access-Control-Allow-Origin", "*");
-	oReq.send();
-}
 
 function RadialTimer() {
 	var self = this;
@@ -117,5 +109,10 @@ function RadialTimer() {
 
 $(document).ready(function() {
     Timer = new RadialTimer();
-    Timer.init("timer", 3, doGet);
+    Timer.init("timer", 3, function(){
+		const psid = $('#psid').val();
+		oReq.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+		oReq.setRequestHeader("Access-Control-Allow-Origin", "*");
+		oReq.send();
+	});
 });
