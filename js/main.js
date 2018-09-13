@@ -1,6 +1,6 @@
 /* eslint-disable */
 var Timer;
-var oReq = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -31,7 +31,7 @@ window.extAsyncInit = () => {
         console.log(err);
 	});
 
-	oReq.addEventListener("load", function(){
+	xhr.addEventListener("load", function(){
 		MessengerExtensions.requestCloseBrowser(function success() {
 			console.log("Webview closing");
 		}, function error(err) {
@@ -112,8 +112,11 @@ $(document).ready(function() {
     Timer = new RadialTimer();
     Timer.init("timer", 3, function(){
 		const psid = $('#psid').val() || null;
-		oReq.open("GET", `https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid=${psid}`);
-		oReq.setRequestHeader("Access-Control-Allow-Origin", "*");
-		oReq.send();
+		xhr.open("GET", "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid="+psid);
+		xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+    	xhr.setRequestHeader("Access-Control-Allow-Headers","Content-Type");
+    	xhr.setRequestHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS");
+    	xhr.setRequestHeader("ccess-Control-Allow-Credentials","true");
+		xhr.send();
 	});
 });
