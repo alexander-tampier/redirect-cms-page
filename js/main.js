@@ -35,7 +35,8 @@ window.extAsyncInit = () => {
 		MessengerExtensions.requestCloseBrowser(function success() {
 			console.log("Webview closing");
 		}, function error(err) {
-			console.log(err);
+			console.log("closing failure");
+          	console.log(err);
 		});
 	});
 };
@@ -111,7 +112,7 @@ $(document).ready(function() {
     Timer = new RadialTimer();
     Timer.init("timer", 3, function(){
 		const psid = $('#psid').val();
-		oReq.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+		oReq.open("GET", `https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid=${psid}`, true);
 		oReq.setRequestHeader("Access-Control-Allow-Origin", "*");
 		oReq.send();
 	});
