@@ -135,9 +135,9 @@ $(document).ready(function() {
     Timer.init("timer", 3, function(){
 		//var psid = $('#psid').val() || null;
 		var query = window.location.search.substring(1);
-		var psid = parse_query_string(query);
-		console.log('PSID: '+psid);
-		xhr.open("GET", "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid="+psid);
+		var parsed_qs = parse_query_string(query);
+		console.log('PSID: '+parsed_qs.psid);
+		xhr.open("GET", "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid="+parsed_qs.psid);
 		//xhr.setRequestHeader("Access-Control-Allow-Origin","*");
     	//xhr.setRequestHeader("Access-Control-Allow-Headers","Content-Type");
     	//xhr.setRequestHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS");
