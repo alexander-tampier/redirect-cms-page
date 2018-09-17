@@ -113,10 +113,10 @@ $(document).ready(function() {
     Timer.init("timer", 3, function(){
 		const psid = $('#psid').val() || null;
 		xhr.open("GET", "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid="+psid);
-		xhr.setRequestHeader("Access-Control-Allow-Origin","*");
-    	xhr.setRequestHeader("Access-Control-Allow-Headers","Content-Type");
-    	xhr.setRequestHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS");
-    	xhr.setRequestHeader("ccess-Control-Allow-Credentials","true");
+		//xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+    	//xhr.setRequestHeader("Access-Control-Allow-Headers","Content-Type");
+    	//xhr.setRequestHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS");
+    	//xhr.setRequestHeader("ccess-Control-Allow-Credentials","true");
 		xhr.send();
 	});
 });
