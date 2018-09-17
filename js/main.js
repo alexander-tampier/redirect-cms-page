@@ -15,7 +15,7 @@ var xhr = new XMLHttpRequest();
 
 window.extAsyncInit = () => {
     MessengerExtensions.getSupportedFeatures(function success(result) {
-        let features = result.supported_features;
+        var features = result.supported_features;
         if (features.includes("context")) {
             MessengerExtensions.getContext('718776831795007', function success(thread_context) {
                 // success
@@ -108,10 +108,26 @@ function RadialTimer() {
 	}
 };
 
+function getSearchParameters() {
+	var prmstr = window.location.search.substr(1);
+	return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+}
+
+function transformToAssocArray( prmstr ) {
+  var params = {};
+  var prmarr = prmstr.split("&");
+  for ( var i = 0; i < prmarr.length; i++) {
+	  var tmparr = prmarr[i].split("=");
+	  params[tmparr[0]] = tmparr[1];
+  }
+  return params;
+}
+
 $(document).ready(function() {
     Timer = new RadialTimer();
     Timer.init("timer", 3, function(){
-		const psid = $('#psid').val() || null;
+		//var psid = $('#psid').val() || null;
+		var psid = getSearchParameters();
 		xhr.open("GET", "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid="+psid);
 		//xhr.setRequestHeader("Access-Control-Allow-Origin","*");
     	//xhr.setRequestHeader("Access-Control-Allow-Headers","Content-Type");
