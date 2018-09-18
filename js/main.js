@@ -1,9 +1,4 @@
 /* eslint-disable */
-var config = {
-	postback_uri: "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback",
-	app_id: "718776831795007"
-}
-
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
@@ -19,7 +14,7 @@ window.extAsyncInit = () => {
     MessengerExtensions.getSupportedFeatures(function success(result) {
         var features = result.supported_features;
         if (features.includes("context")) {
-            MessengerExtensions.getContext(config.app_id, function success(thread_context) {
+            MessengerExtensions.getContext("718776831795007", function success(thread_context) {
                 // success
                 console.log('ThreadContext: ' + JSON.stringify(thread_context));
                 document.getElementById("psid").value = thread_context.psid;
@@ -135,12 +130,12 @@ function parse_query_string(query) {
 document.addEventListener("DOMContentLoaded", function(event) {
 	var Timer = null;
 	var xhr = new XMLHttpRequest();
-	
+
 	Timer = new RadialTimer();
 	Timer.init("timer", 3, function(){
 	var query = window.location.search.substring(1);
 	var parsed_qs = parse_query_string(query);
-	xhr.open("GET", config.postback_uri+"?userId="+parsed_qs.userId);
+	xhr.open("GET", "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback"+"?userId="+parsed_qs.userId);
 	xhr.send();
 	});
 });
