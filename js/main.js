@@ -1,4 +1,7 @@
 /* eslint-disable */
+var Timer = null;
+var xhr = new XMLHttpRequest();
+
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
@@ -128,9 +131,6 @@ function parse_query_string(query) {
   };
 
 document.addEventListener("DOMContentLoaded", function(event) {
-	var Timer = null;
-	var xhr = new XMLHttpRequest();
-
 	Timer = new RadialTimer();
 	Timer.init("timer", 3, function(){
 	var query = window.location.search.substring(1);
