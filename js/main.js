@@ -137,11 +137,8 @@ $(document).ready(function() {
 		var query = window.location.search.substring(1);
 		var parsed_qs = parse_query_string(query);
 		console.log('PSID: '+parsed_qs.psid);
+		// https://bot-int.a1.net/a1bot-fbadapter/rest/webview/postpack?psid=
 		xhr.open("GET", "https://a1bot-fbadapter-d.eu-de.mybluemix.net/rest/webview/postback?psid="+parsed_qs.psid);
-		//xhr.setRequestHeader("Access-Control-Allow-Origin","*");
-    	//xhr.setRequestHeader("Access-Control-Allow-Headers","Content-Type");
-    	//xhr.setRequestHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS");
-    	//xhr.setRequestHeader("ccess-Control-Allow-Credentials","true");
 		xhr.send();
 	});
 });
